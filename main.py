@@ -15,7 +15,13 @@ def check_brackets(brackets):
         if bracket in '({[<':
             stack.push(Element(bracket))
         elif bracket in ')}]>' and stack.size() > 0:
-            if stack.peek() != brackets_pair[bracket]:
+            if stack.peek().data != brackets_pair[bracket]:
                 return 'Несбалансированно'
+            else:
+                stack.pop()
+        else:
+            return 'Несбалансированно или неподдерживаемый тип скобки'
+
+    return 'Сбалансировано' if stack.size() == 0 else 'Несбалансированно'
 
 
