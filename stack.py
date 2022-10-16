@@ -32,5 +32,13 @@ class Stack:
 class Element:
 
     def __init__(self, data):
-        self.data = data
+        self.__data = data
         self.prev = None
+
+    @property
+    def data(self):
+        return self.__data
+
+    @data.setter
+    def data(self, new_data):
+        self.__data = new_data
